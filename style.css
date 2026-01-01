@@ -92,6 +92,93 @@ button[disabled] {
   textarea, #output-text { height: 160px; }
 }
 
+/* ==== Overrides to ensure copy button and result text are clearly visible ==== */
+/* Make the result text dark and remove its border so it's easy to read */
+#output-text {
+  border: none !important;
+  background: #ffffff !important;
+  color: #0f172a !important; /* very dark text */
+}
+
+/* Make the copy button clearly visible (green) */
+/* Copy button: white background, black text, light grey border */
+#copy-btn {
+  background: #e5e7eb !important; /* light grey background */
+  color: #0f172a !important; /* dark/black text */
+  border: 1px solid #d1d5db !important; /* subtle border */
+  box-shadow: none !important;
+}
+
+/* Make the main action button (Encrypt/Decrypt) match the copy button style */
+#action-btn {
+  background: #e5e7eb !important; /* light grey */
+  color: #0f172a !important;        /* dark text */
+  border: 1px solid #d1d5db !important; /* subtle border */
+  box-shadow: none !important;
+  transition: border-color .18s ease, box-shadow .18s ease, transform .12s ease, filter .12s ease;
+}
+
+/* Slight hover to indicate clickability */
+#action-btn:hover { background: #e9ecef !important; }
+
+/* Hover effect: dark (near-black) background, white text, and lift */
+#action-btn:hover {
+  background: rgba(0,0,0,0.85) !important; /* near-black */
+  color: #ffffff !important;                /* white text */
+  border-color: #000 !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18), 0 0 12px rgba(255,255,255,0.03) inset !important;
+  transform: translateY(-2px) !important;
+  filter: brightness(1.02) !important;
+}
+
+/* When disabled, keep the button readable but show it's inactive */
+#copy-btn[disabled] {
+  opacity: 0.85 !important;
+  filter: none !important;
+  cursor: not-allowed;
+}
+
+/* If the HTML uses utility text classes on the output, make sure the ID wins */
+.text-gray-300#output-text, #output-text.text-gray-300 {
+  color: #0f172a !important;
+}
+
+/* Make typed text in the input textarea grey (not pure black) */
+#input-text, textarea#input-text {
+  color: #6b7280 !important; /* medium grey for entered text */
+}
+
+/* Placeholder should be a lighter grey */
+#input-text::placeholder, textarea#input-text::placeholder {
+  color: #9ca3af !important;
+}
+
+/* Mode buttons: persistent active state (selected) */
+#mode-encrypt.active, #mode-decrypt.active {
+  background: #e5e7eb !important; /* light grey background */
+  color: #0f172a !important;       /* dark text */
+  box-shadow: none !important;
+}
+
+/* Slightly darker on hover for mode buttons */
+#mode-encrypt:hover, #mode-decrypt:hover {
+  background: #eef2f6;
+}
+
+/* Give mode buttons the same hover shine/lift as action button */
+#mode-encrypt, #mode-decrypt {
+  transition: border-color .18s ease, box-shadow .18s ease, transform .12s ease, filter .12s ease;
+}
+#mode-encrypt:hover, #mode-decrypt:hover {
+  background: rgba(0,0,0,0.85) !important; /* near-black */
+  color: #ffffff !important;                /* white text */
+  border-color: #000 !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18), 0 0 12px rgba(255,255,255,0.03) inset !important;
+  transform: translateY(-2px) !important;
+  filter: brightness(1.02) !important;
+}
+
+
 /* ---- Tailwind-like utility fallbacks used in the HTML ----
    These implement just the utilities that the page references so
    you can remove the Tailwind CDN and keep the same layout.
@@ -216,7 +303,7 @@ textarea {
   width: 100%;
   height: 160px;
   padding: 10px;
-  border: 1px solid #d1d5db; /* soft border */
+  border: 1px solid #d6dade; /* soft border */
   border-radius: 8px;
   font-size: 16px;
   resize: vertical; /* user can resize vertically */
@@ -228,7 +315,7 @@ button {
   border: none;
   border-radius: 9999px; /* pill-shaped */
   background: #4f46e5; /* blue/purple */
-  color: white;
+  color: rgb(26, 24, 24);
   font-weight: 600;
   cursor: pointer;
 }
@@ -333,6 +420,7 @@ body {
   border-radius: 12px;
   padding: 16px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  border-color: #0d0e0f;
 }
 
 /* Text area (input) */
@@ -352,7 +440,7 @@ button {
   border: none;
   border-radius: 9999px; /* pill-shaped */
   background: #4f46e5; /* blue/purple */
-  color: white;
+  color: rgb(107, 93, 93);
   font-weight: 600;
   cursor: pointer;
 }
@@ -419,7 +507,7 @@ body {
 { transition: transform .25s ease, opacity .25s ease; }
 
 #output-text 
-{ background: #c4c9cf; color: #111827; }
+{ background: #c4c9cf; color: #111827; border-color: black; }
 
 /* Action button default look (Tailwind classes provide most styling) */
 #action-btn 

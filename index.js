@@ -80,6 +80,9 @@ function copyOutput() {
 
 function setMode(m) {
   mode = m;
+  // mark active mode button for persistent styling
+  modeEncrypt.classList.toggle('active', mode === 'encrypt');
+  modeDecrypt.classList.toggle('active', mode === 'decrypt');
   if (mode === 'encrypt') {
     actionBtn.textContent = 'Encrypt';
     modeEncrypt.classList.add('text-white', 'shadow-lg');

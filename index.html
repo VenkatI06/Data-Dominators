@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureCrypt - Vanilla</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="body" class="bg-gray-50 mode-transition">
+    <div id="root" class="min-h-screen flex items-center justify-center p-4">
+        <div class="w-full max-w-4xl flex flex-col md:flex-row gap-8 items-center md:items-stretch">
+            
+            <!-- Main Interface Area -->
+            <div class="flex-1 space-y-8 order-2 md:order-1">
+                <h1 id="app-title" class="text-4xl font-bold text-center mode-transition">
+                    Encryption
+                </h1>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Input Section -->
+                    <div class="flex flex-col gap-4">
+                        <div id="input-card" class="bg-white rounded-3xl p-6 shadow-2xl card-shadow hover:scale-[1.01]">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-gray-400 font-medium">Enter Text</span>
+                                <button id="action-btn" class="px-6 py-2 rounded-full font-bold text-white transition-all duration-300 hover:brightness-110 active:scale-95 shadow-md">
+                                    Encrypt
+                                </button>
+                            </div>
+                            <textarea id="input-text" placeholder="Type text to encrypt..." class="w-full h-48 bg-transparent border-none outline-none resize-none text-lg text-gray-700 placeholder-gray-300"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Output Section -->
+                    <div class="flex flex-col gap-4">
+                        <div id="output-card" class="bg-white rounded-3xl p-6 shadow-2xl card-shadow hover:scale-[1.01]">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-gray-400 font-medium">Result</span>
+                                <button id="copy-btn" disabled class="px-6 py-2 rounded-full font-bold text-black transition-all duration-300 active:scale-95 shadow-md opacity-50 cursor-not-allowed">
+                                    Copy
+                                </button>
+                            </div>
+                            <div id="output-text" class="w-full h-48 rounded-xl p-4 overflow-auto break-all transition-colors duration-500 text-gray-300 italic bg-gray-50">
+                                Results will appear here...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Switcher -->
+            <div class="flex flex-row md:flex-col gap-4 order-1 md:order-2 justify-center">
+                <button id="mode-encrypt" class="px-8 py-3 rounded-2xl font-bold transition-all duration-500 flex items-center gap-3 text-white shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                    </svg>
+                    <span>Encryption</span>
+                </button>
+                <button id="mode-decrypt" class="px-8 py-3 rounded-2xl font-bold transition-all duration-500 flex items-center gap-3 text-gray-400 bg-white shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z" />
+                    </svg>
+                    <span>Decryption</span>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Toast Notification -->
+        <div id="toast" class="fixed bottom-8 left-1/2 transform -translate-x-1/2 px-6 py-3 rounded-full text-white font-medium shadow-2xl toast-transition opacity-0 translate-y-12 pointer-events-none z-50 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+            </svg>
+            <span id="toast-message"></span>
+        </div>
+    </div>
+    <script type="module" src="./index.js"></script>
+</body>
+</html>
